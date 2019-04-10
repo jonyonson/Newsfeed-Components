@@ -134,6 +134,9 @@
   transform: translate(-50%);
   background-color: white;
 }
+.article .expandButton:hover {
+  color: black;
+}
 .article--open {
   height: 400px;
   transition: height 0.4s cubic-bezier(1, 0, 0, 1);
