@@ -83,16 +83,26 @@
   margin-top: 95px;
 }
 .article {
-  transition: height 0.4s cubic-bezier(1, 0, 0, 1);
+  transition: max-height 0.4s cubic-bezier(1, 0, 0, 1);
   margin: 20px 10%;
   padding: 0 20px 25px;
   border: 1px solid lightgrey;
   border-radius: 10px;
   background-color: white;
   position: relative;
-  height: 50px;
+  height: auto;
   overflow: hidden;
   box-shadow: 2px 2px 2px lightgrey;
+}
+.article.article--collapsed {
+  max-height: 50px;
+}
+.article.article--open {
+  max-height: 3000px;
+  transition: max-height 0.4s cubic-bezier(1, 0, 0, 1);
+}
+.article.article--done {
+  animation: slide-out-blurred-top 0.45s cubic-bezier(0.755, 0.05, 0.855, 0.06) both;
 }
 .article h2 {
   font-size: 28px;
@@ -101,7 +111,7 @@
 }
 @media (max-width: 800px) {
   .article h2 {
-    font-size: 22px;
+    font-size: 20px;
   }
 }
 @media (max-width: 500px) {
@@ -109,9 +119,24 @@
     font-size: 18px;
   }
 }
+.article p {
+  line-height: 1.4;
+  font-size: 16px;
+}
+@media (max-width: 500px) {
+  .article p {
+    font-size: 13px;
+    margin-top: 1.3rem;
+  }
+}
 .article .date {
   margin: 0;
   font-size: 14px;
+}
+@media (max-width: 500px) {
+  .article .date {
+    font-size: 12px;
+  }
 }
 .article .close {
   position: absolute;
@@ -136,13 +161,6 @@
 }
 .article .expandButton:hover {
   color: black;
-}
-.article--open {
-  height: 400px;
-  transition: height 0.4s cubic-bezier(1, 0, 0, 1);
-}
-.article--done {
-  animation: slide-out-blurred-top 0.45s cubic-bezier(0.755, 0.05, 0.855, 0.06) both;
 }
 @keyframes slide-out-blurred-top {
   0% {
