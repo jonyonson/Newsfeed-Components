@@ -3,19 +3,19 @@
   font-family: 'Roboto';
   font-style: italic;
   font-weight: 400;
-  src: local('Roboto Italic'), local('Roboto-Italic'), url(https://fonts.gstatic.com/s/roboto/v18/KFOkCnqEu92Fr1Mu51xIIzc.ttf) format('truetype');
+  src: local('Roboto Italic'), local('Roboto-Italic'), url(https://fonts.gstatic.com/s/roboto/v19/KFOkCnqEu92Fr1Mu51xIIzc.ttf) format('truetype');
 }
 @font-face {
   font-family: 'Roboto';
   font-style: normal;
   font-weight: 400;
-  src: local('Roboto'), local('Roboto-Regular'), url(https://fonts.gstatic.com/s/roboto/v18/KFOmCnqEu92Fr1Mu4mxP.ttf) format('truetype');
+  src: local('Roboto'), local('Roboto-Regular'), url(https://fonts.gstatic.com/s/roboto/v19/KFOmCnqEu92Fr1Mu4mxP.ttf) format('truetype');
 }
 @font-face {
   font-family: 'Roboto';
   font-style: normal;
   font-weight: 700;
-  src: local('Roboto Bold'), local('Roboto-Bold'), url(https://fonts.gstatic.com/s/roboto/v18/KFOlCnqEu92Fr1MmWUlfBBc9.ttf) format('truetype');
+  src: local('Roboto Bold'), local('Roboto-Bold'), url(https://fonts.gstatic.com/s/roboto/v19/KFOlCnqEu92Fr1MmWUlfBBc9.ttf) format('truetype');
 }
 /* Below this line is where you will start your work */
 /* It is important to note, you will not be writing any CSS in this file*/
@@ -34,6 +34,147 @@
 .header h1 {
   margin: 0;
   font-size: 48px;
+}
+@media (max-width: 800px) {
+  .header h1 {
+    font-size: 34px;
+  }
+}
+@media (max-width: 500px) {
+  .header h1 {
+    font-size: 22px;
+  }
+}
+.menu-button {
+  position: absolute;
+  left: 20px;
+  cursor: pointer;
+}
+.menu {
+  transition: all 0.3s ease-in-out;
+  position: fixed;
+  top: 75px;
+  left: 0;
+  left: -400px;
+  width: 350px;
+  height: 100vh;
+  /* This give the height 100% of the screen or, '100% of View Height' */
+  background-color: #81C784;
+  border: 1px solid #004D40;
+  border-left: none;
+  border-bottom: none;
+  z-index: 2;
+  /* This set the layer level of the element, it has precendence over initial level of 1*/
+}
+.menu ul {
+  padding: 0;
+}
+.menu ul li {
+  list-style-type: none;
+  font-size: 32px;
+  padding: 30px 0;
+  text-align: center;
+}
+.menu--open {
+  left: 0;
+  transition: all 0.3s ease;
+}
+.articles {
+  margin-top: 95px;
+}
+.article {
+  transition: max-height 0.4s cubic-bezier(1, 0, 0, 1);
+  margin: 20px 10%;
+  padding: 0 20px 25px;
+  border: 1px solid lightgrey;
+  border-radius: 10px;
+  background-color: white;
+  position: relative;
+  height: auto;
+  overflow: hidden;
+  box-shadow: 2px 2px 2px lightgrey;
+}
+.article.article--collapsed {
+  max-height: 50px;
+}
+.article.article--open {
+  max-height: 3000px;
+  transition: max-height 0.4s cubic-bezier(1, 0, 0, 1);
+}
+.article.article--done {
+  animation: slide-out-blurred-top 0.45s cubic-bezier(0.755, 0.05, 0.855, 0.06) both;
+}
+.article h2 {
+  font-size: 28px;
+  padding: 0;
+  margin: 15px 0 0;
+}
+@media (max-width: 800px) {
+  .article h2 {
+    font-size: 20px;
+  }
+}
+@media (max-width: 500px) {
+  .article h2 {
+    font-size: 18px;
+  }
+}
+.article p {
+  line-height: 1.4;
+  font-size: 16px;
+}
+@media (max-width: 500px) {
+  .article p {
+    font-size: 13px;
+    margin-top: 1.3rem;
+  }
+}
+.article .date {
+  margin: 0;
+  font-size: 14px;
+}
+@media (max-width: 500px) {
+  .article .date {
+    font-size: 12px;
+  }
+}
+.article .close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 15px;
+  color: grey;
+  cursor: pointer;
+}
+.article .close:hover {
+  color: green;
+}
+.article .expandButton {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  font-size: 12px;
+  color: grey;
+  cursor: pointer;
+  transform: translate(-50%);
+  background-color: white;
+}
+.article .expandButton:hover {
+  color: black;
+}
+@keyframes slide-out-blurred-top {
+  0% {
+    transform: translateY(0) scaleY(1) scaleX(1);
+    transform-origin: 50% 0%;
+    filter: blur(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-1000px) scaleY(2) scaleX(0.2);
+    transform-origin: 50% 0%;
+    filter: blur(40px);
+    opacity: 0;
+  }
 }
 html,
 body {
